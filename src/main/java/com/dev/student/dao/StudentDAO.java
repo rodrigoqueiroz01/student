@@ -12,10 +12,12 @@ public interface StudentDAO {
 
     public List<Student> listStudents();
 
+    public Student getStudent(Integer id);
+
     public void updateByName(Integer id, String name);
 
     public void updateByAge(Integer id, Integer age);
 
-    public Student getStudent(Integer id);
+    public void delete(Integer id);
 
 }

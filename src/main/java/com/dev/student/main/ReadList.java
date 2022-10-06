@@ -1,4 +1,4 @@
-package com.dev.student;
+package com.dev.student.main;
 
 import com.dev.student.entity.Student;
 import com.dev.student.template.StudentJDBCTemplate;
@@ -6,25 +6,14 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import java.util.List;
 
-public class MainApp {
+public class ReadList {
 
     public static void main(String[] args) {
         ApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
 
-        StudentJDBCTemplate studentJDBCTemplate = (StudentJDBCTemplate)
-                context.getBean("studentJDBCTemplate");
+        var studentJDBCTemplate = (StudentJDBCTemplate) context.getBean("studentJDBCTemplate");
 
-        System.out.println("\n====== Records Creation ======");
-        studentJDBCTemplate.create("Rivaldo", 16);
-
-        System.out.println("\n====== Updating record by ID ======");
-        studentJDBCTemplate.updateByName(1, "Felipe");
-        studentJDBCTemplate.updateByAge(1, 16);
-
-        System.out.println("\n====== Update listing record ======");
-
-
-        System.out.println("\n====== Listing Multiple Records ======");
+        System.out.println("\n========== LISTAGEM DE TODOS OS REGISTROS ==========");
         List<Student> students = studentJDBCTemplate.listStudents();
 
         for (Student record : students) {
@@ -33,4 +22,5 @@ public class MainApp {
             System.out.println(", Age: " + record.getAge());
         }
     }
+
 }
